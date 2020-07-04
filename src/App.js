@@ -35,6 +35,7 @@ class App extends React.Component {
     if (route === "home") this.setState({ signedIn: true });
     else if (route === "signin") {
       this.setState({ initialState });
+      this.setState({ imageUrl: "" });
     }
     this.setState({ route: route });
   };
