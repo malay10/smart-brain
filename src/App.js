@@ -79,7 +79,7 @@ class App extends React.Component {
     this.setState({ imageUrl: this.state.input });
     // console.log("Submit");
 
-    fetch("https://pristine-north-cascades-27369.herokuapp.com:3000/imageurl", {
+    fetch("https://pristine-north-cascades-27369.herokuapp.com/imageurl", {
       method: "post",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -89,16 +89,13 @@ class App extends React.Component {
       .then((response) => response.json())
       .then((response) => {
         if (response) {
-          fetch(
-            "https://pristine-north-cascades-27369.herokuapp.com:3000/image",
-            {
-              method: "put",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({
-                id: this.state.user.id,
-              }),
-            }
-          )
+          fetch("https://pristine-north-cascades-27369.herokuapp.com/image", {
+            method: "put",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              id: this.state.user.id,
+            }),
+          })
             .then((response) => response.json())
             .then((count) => {
               this.setState(Object.assign(this.state.user, { entries: count }));
